@@ -41,15 +41,15 @@ Config = {
 		-------------------------	
 		NameLogs = "Logs - EMS",
 		-------------------------
-		service = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		boss = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		medikit = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		shop = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		CoffreObjets = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		Reanimation = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		AcceuilAmbulance = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		annonces = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
-		FicheMedical = "https://discord.com/api/webhooks/979496450364932106/YRRte_DvTiEEHD_AMVvz4WOuLus3Cf7QN6PeFUSZfhH5Z2uLgk82LAn9DXMrX2tEEOIi",
+		service = "Webhook",
+		boss = "Webhook",
+		medikit = "Webhook",
+		shop = "Webhook",
+		CoffreObjets = "Webhook",
+		Reanimation = "Webhook",
+		AcceuilAmbulance = "Webhook",
+		annonces = "Webhook",
+		FicheMedical = "Webhook",
 	},
 
 
