@@ -71,7 +71,7 @@ Citizen.CreateThread(function()
 						if v.category == nil then
 							ESX.TriggerServerCallback('eAmbulance:getVehGarage', function(amount)
 								stockHelico[GetHashKey(v.model)] = amount
-								GarageHeliPolice()
+								GarageHeliAmbu()
 							end, GetHashKey(v.model))
 						end
 					end
@@ -91,7 +91,7 @@ Citizen.CreateThread(function()
 						if v.category == nil then
 							ESX.TriggerServerCallback('eAmbulance:getVehGarage', function(amount)
 								stockBato[GetHashKey(v.model)] = amount
-								BateauPolice()
+								BateauAmbu()
 							end, GetHashKey(v.model))
 						end
 					end
@@ -284,7 +284,7 @@ function GarageAmbulanceSud()
 	end
 end
 
-function GarageHeliPolice()
+function GarageHeliAmbu()
 	local ghp = RageUI.CreateMenu("E.M.S", "Garage Hélico")
     ghp:SetRectangleBanner(Config.ColorMenuR, Config.ColorMenuG, Config.ColorMenuB, Config.ColorMenuA)
 		RageUI.Visible(ghp, not RageUI.Visible(ghp))
@@ -336,7 +336,7 @@ function GarageHeliPolice()
 	end
 end
 
-function BateauPolice()
+function BateauAmbu()
     local batp = RageUI.CreateMenu("E.M.S", "Garage bateaux")
     batp:SetRectangleBanner(Config.ColorMenuR, Config.ColorMenuG, Config.ColorMenuB, Config.ColorMenuA)
     RageUI.Visible(batp, not RageUI.Visible(batp))

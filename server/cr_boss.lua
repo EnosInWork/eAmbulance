@@ -13,7 +13,7 @@ AddEventHandler('eAmbulance:recruter', function(target)
   	if xPlayer.job.grade_name == 'boss' then
   	xTarget.setJob(Config.JobName, 0)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été recruté")
-  	TriggerClientEvent('esx:showNotification', target, "<C>Bienvenue chez la police !")
+  	TriggerClientEvent('esx:showNotification', target, "<C>Bienvenue chez les EMS !")
 	  rxeLogsDiscord("[RECRUTEMENT] **"..xPlayer.getName().."** a recruté **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron...")
@@ -22,7 +22,7 @@ end
   	if xPlayer.job2.grade_name == 'boss' then
   	xTarget.setJob2(Config.JobName, 0)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été recruté")
-  	TriggerClientEvent('esx:showNotification', target, "<C>Bienvenue chez la police !")
+  	TriggerClientEvent('esx:showNotification', target, "<C>Bienvenue chez les EMS !")
 	  rxeLogsDiscord("[RECRUTEMENT] **"..xPlayer.getName().."** a recruté **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron...")
@@ -41,7 +41,7 @@ AddEventHandler('eAmbulance:promouvoir', function(target)
   	if xPlayer.job.grade_name == 'boss' and xPlayer.job.name == xTarget.job.name then
   	xTarget.setJob(Config.JobName, tonumber(xTarget.job.grade) + 1)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été promu")
-  	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été promu chez la police!")
+  	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été promu chez les EMS!")
 	  rxeLogsDiscord("[PROMOTION] **"..xPlayer.getName().."** a promu **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être promu")
@@ -50,7 +50,7 @@ end
   	if xPlayer.job2.grade_name == 'boss' and xPlayer.job2.name == xTarget.job2.name then
   	xTarget.setJob2(Config.JobName, tonumber(xTarget.job2.grade) + 1)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été promu")
-  	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été promu chez la police!")
+  	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été promu chez les EMS!")
 	  rxeLogsDiscord("[PROMOTION] **"..xPlayer.getName().."** a promu **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être promu")
