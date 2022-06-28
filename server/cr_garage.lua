@@ -25,7 +25,7 @@ AddEventHandler('eAmbulance:addVehInGarage', function(carName)
 		})
 
 
-		rxeLogsDiscord("[AJOUT VEHICULE] **"..xPlayer.getName().."** a ajouté un véhicule **"..carName.."** au garage", Config.logs.Boss)
+		eLogsDiscord("[AJOUT VEHICULE] **"..xPlayer.getName().."** a ajouté un véhicule **"..carName.."** au garage", Config.logs.Boss)
 	end
 end)
 
@@ -40,7 +40,7 @@ AddEventHandler('eAmbulance:addVehInGarageN', function(carName)
 		})
 
 
-		rxeLogsDiscord("[AJOUT VEHICULE] **"..xPlayer.getName().."** a ajouté un véhicule **"..carName.."** au garage", Config.logs.Boss)
+		eLogsDiscord("[AJOUT VEHICULE] **"..xPlayer.getName().."** a ajouté un véhicule **"..carName.."** au garage", Config.logs.Boss)
 	end
 end)
 
@@ -57,7 +57,7 @@ AddEventHandler('eAmbulance:removeVehInGarage', function(carName)
 		})
 		end)
 
-		rxeLogsDiscord("[SUPP VEHICULE] **"..xPlayer.getName().."** a supprimé un véhicule **"..carName.."** du garage", Config.logs.Boss)
+		eLogsDiscord("[SUPP VEHICULE] **"..xPlayer.getName().."** a supprimé un véhicule **"..carName.."** du garage", Config.logs.Boss)
     end
 end)
 
@@ -74,6 +74,6 @@ AddEventHandler('eAmbulance:removeVehInGarageN', function(carName)
 		})
 		end)
 
-		rxeLogsDiscord("[SUPP VEHICULE] **"..xPlayer.getName().."** a supprimé un véhicule **"..carName.."** du garage", Config.logs.Boss)
+		eLogsDiscord("[SUPP VEHICULE] **"..xPlayer.getName().."** a supprimé un véhicule **"..carName.."** du garage", Config.logs.Boss)
     end
 end)

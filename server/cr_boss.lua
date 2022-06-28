@@ -14,7 +14,7 @@ AddEventHandler('eAmbulance:recruter', function(target)
   	xTarget.setJob(Config.JobName, 0)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été recruté")
   	TriggerClientEvent('esx:showNotification', target, "<C>Bienvenue chez les EMS !")
-	  rxeLogsDiscord("[RECRUTEMENT] **"..xPlayer.getName().."** a recruté **"..xTarget.getName().."**", Config.logs.Boss)
+	  eLogsDiscord("[RECRUTEMENT] **"..xPlayer.getName().."** a recruté **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron...")
 end
@@ -23,7 +23,7 @@ end
   	xTarget.setJob2(Config.JobName, 0)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été recruté")
   	TriggerClientEvent('esx:showNotification', target, "<C>Bienvenue chez les EMS !")
-	  rxeLogsDiscord("[RECRUTEMENT] **"..xPlayer.getName().."** a recruté **"..xTarget.getName().."**", Config.logs.Boss)
+	  eLogsDiscord("[RECRUTEMENT] **"..xPlayer.getName().."** a recruté **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron...")
 end
@@ -42,7 +42,7 @@ AddEventHandler('eAmbulance:promouvoir', function(target)
   	xTarget.setJob(Config.JobName, tonumber(xTarget.job.grade) + 1)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été promu")
   	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été promu chez les EMS!")
-	  rxeLogsDiscord("[PROMOTION] **"..xPlayer.getName().."** a promu **"..xTarget.getName().."**", Config.logs.Boss)
+	  eLogsDiscord("[PROMOTION] **"..xPlayer.getName().."** a promu **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être promu")
 end
@@ -51,7 +51,7 @@ end
   	xTarget.setJob2(Config.JobName, tonumber(xTarget.job2.grade) + 1)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été promu")
   	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été promu chez les EMS!")
-	  rxeLogsDiscord("[PROMOTION] **"..xPlayer.getName().."** a promu **"..xTarget.getName().."**", Config.logs.Boss)
+	  eLogsDiscord("[PROMOTION] **"..xPlayer.getName().."** a promu **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être promu")
 end
@@ -70,7 +70,7 @@ AddEventHandler('eAmbulance:descendre', function(target)
   	xTarget.setJob(Config.JobName, tonumber(xTarget.job.grade) - 1)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été rétrogradé")
   	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été rétrogradé des "..Config.PrefixName.."!")
-	  rxeLogsDiscord("[RETROGRADE] **"..xPlayer.getName().."** a rétrogradé **"..xTarget.getName().."**", Config.logs.Boss)
+	  eLogsDiscord("[RETROGRADE] **"..xPlayer.getName().."** a rétrogradé **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être promu")
 end
@@ -79,7 +79,7 @@ end
   	xTarget.setJob2(Config.JobName, tonumber(xTarget.job2.grade) - 1)
   	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été rétrogradé")
   	TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été rétrogradé des "..Config.PrefixName.."!")
-	  rxeLogsDiscord("[RETROGRADE] **"..xPlayer.getName().."** a rétrogradé **"..xTarget.getName().."**", Config.logs.Boss)
+	  eLogsDiscord("[RETROGRADE] **"..xPlayer.getName().."** a rétrogradé **"..xTarget.getName().."**", Config.logs.Boss)
   	else
 	TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être promu")
 end
@@ -96,7 +96,7 @@ AddEventHandler('eAmbulance:virer', function(target)
             xTarget.setJob("unemployed", 0)
             TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été viré")
             TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été viré des "..Config.PrefixName.."!")
-            rxeLogsDiscord("[VIREMENT] **"..xPlayer.getName().."** a viré **"..xTarget.getName().."**", Config.logs.Boss)
+            eLogsDiscord("[VIREMENT] **"..xPlayer.getName().."** a viré **"..xTarget.getName().."**", Config.logs.Boss)
         else
             TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être viré")
         end
@@ -105,7 +105,7 @@ AddEventHandler('eAmbulance:virer', function(target)
             xTarget.setJob2("unemployed2", 0)
             TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>Le joueur a été viré")
             TriggerClientEvent('esx:showNotification', target, "<C>Vous avez été viré des "..Config.PrefixName.."!")
-            rxeLogsDiscord("[VIREMENT] **"..xPlayer.getName().."** a viré **"..xTarget.getName().."**", Config.logs.Boss)
+            eLogsDiscord("[VIREMENT] **"..xPlayer.getName().."** a viré **"..xTarget.getName().."**", Config.logs.Boss)
   	    else
 	        TriggerClientEvent('esx:showNotification', xPlayer.source, "<C>t'es pas patron ou alors le joueur ne peut pas être viré")
         end
