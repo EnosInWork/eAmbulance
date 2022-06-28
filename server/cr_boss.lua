@@ -117,7 +117,7 @@ AddEventHandler("eAmbulance:retraitentreprise", function(money)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	local total = money
-	local xMoney = xPlayer.getBank()
+	local xMoney = xPlayer.getAccount("bank").money
 	
 	TriggerEvent('esx_addonaccount:getSharedAccount', Config.SocietyName, function (account)
 		if account.money >= total then
