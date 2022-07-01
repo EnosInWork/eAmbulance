@@ -27,48 +27,31 @@ if Config.Defibrilateur then
 	end)
 end
 
-RegisterNetEvent('eAmbulance:revive')
-AddEventHandler('eAmbulance:revive', function(playerId)
-	playerId = tonumber(playerId)
-	if source == '' and GetInvokingResource() == 'monitor' then -- txAdmin support
-        local xTarget = ESX.GetPlayerFromId(playerId)
-        if xTarget then
-            if deadPlayers[playerId] then
-                print('vous avez réanimé ~r~%s~s~', xTarget.name)
-                xTarget.TriggerEvent('eAmbulance:revive')
-            else
-                print('n\'est pas inconscient')
-            end
-        else
-            print('ce joueur n\'est plus en ligne')
+RegisterServerEvent('eAmbulance:revive')
+AddEventHandler('eAmbulance:revive', function(target)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local xPlayers = ESX.GetPlayers()
+
+    if xPlayer.job.name == 'ambulance' then
+        local societyAccount = nil
+        TriggerEvent('esx_addonaccount:getSharedAccount', 'society_ambulance', function(account)
+            societyAccount = account
+        end)
+        if societyAccount ~= nil then
+            xPlayer.addMoney(Config.ReviveReward)
+            TriggerClientEvent('eAmbulance:revive', target)
+            societyAccount.addMoney(150)
+            print('150$ ajouté')
         end
-	else
-		local xPlayer = source and ESX.GetPlayerFromId(source)
-
-		if xPlayer and xPlayer.job.name == Config.JobName then
-			local xTarget = ESX.GetPlayerFromId(playerId)
-
-			if xTarget then
-				if deadPlayers[playerId] then
-					if Config.ReviveReward > 0 then
-						xPlayer.showNotification("vous avez réannimé ~r~"..xTarget.name.."~s~, ~g~"..Config.ReviveReward)
-						
-						xPlayer.addMoney(Config.ReviveReward)
-						xTarget.triggerEvent('eAmbulance:revive')
-						eLogsDiscord("[Réanimation] "..xPlayer.getName().." a réanimé "..xTarget.name.." et il a gagner "..Config.ReviveReward.." pour la société EMS", Config.logs.Reanimation)
-					else
-						xPlayer.showNotification("vous avez réannimé ~r~"..xTarget.name)
-						eLogsDiscord("[Réanimation] "..xPlayer.getName().." a réanimé "..xTarget.name.." pour la société EMS", Config.logs.Reanimation)
-						xTarget.triggerEvent('eAmbulance:revive')
-					end
-				else
-					xPlayer.showNotification('n\'est pas inconscient')
-				end
-			else
-				xPlayer.showNotification('ce joueur n\'est plus en ligne')
-			end
-		end
-	end
+        for i=1, #xPlayers, 1 do
+            local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+            if xPlayer.job.name == 'ambulance' then
+                TriggerClientEvent('eAmbulance:notif', xPlayers[i])
+            end
+        end
+    else
+        print(('eAmbulance: %s attempted to revive!'):format(xPlayer.identifier))
+    end
 end)
 
 RegisterNetEvent('esx:onPlayerDeath')
