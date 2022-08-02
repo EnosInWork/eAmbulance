@@ -151,7 +151,7 @@ end)
 ESX.RegisterServerCallback('eAmbulance:getSocietyMoney', function(source, cb, societyName)
 	if societyName ~= nil then
 	  local society = Config.SocietyName
-	  TriggerEvent('esx_addonaccount:getSharedAccount', society, function(account)
+	  TriggerEvent('esx_addonaccount:getSharedAccount', "society_ambulance", function(account)
 		cb(account.money)
 	  end)
 	else
