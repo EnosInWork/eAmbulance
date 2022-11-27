@@ -1,5 +1,88 @@
 
+ESX = nil 
+
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent(Config.esxGet, function(obj) ESX = obj end)
+        Citizen.Wait(10)
+    end
+    while ESX.GetPlayerData().job == nil do
+        Citizen.Wait(10)
+    end
+    if ESX.IsPlayerLoaded() then
+
+        ESX.PlayerData = ESX.GetPlayerData()
+
+    end
+end)
+
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+    ESX.PlayerData.job = job
+end)
+
 local MoneyAmbulance = nil
+
+function RefreshAmbulanceMoney()
+	if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
+		ESX.TriggerServerCallback('eAmbulance:getSocietyMoney', function(money)
+			UpdateAmbulanceMoney(money)
+		end, ESX.PlayerData.job.name)
+	end
+end
+
+function UpdateAmbulanceMoney(money)
+    MoneyAmbulance = ESX.Math.GroupDigits(money)
+end
+
+Citizen.CreateThread(function()
+    while true do
+        local wait = 800
+        local player = PlayerPedId()
+        local plyPos = GetEntityCoords(player)
+        --------------------------------------------------------------------------------------------------------------------
+        local SudBoss = #(plyPos-Config.Sud.boss)
+        --------------------------------------------------------------------------------------------------------------------
+        local NordBoss = #(plyPos-Config.Nord.boss)
+        --------------------------------------------------------------------------------------------------------------------
+        if ESX.PlayerData.job and ESX.PlayerData.job.name == Config.JobName then 
+            --------------------------------------------------------
+            if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
+
+                if NordBoss <= Config.Marker.DrawDistance then
+                    wait = 0
+                    DrawMarker(Config.Marker.Type, Config.Nord.boss.x, Config.Nord.boss.y, Config.Nord.boss.z-0.99, nil, nil, nil, -90, nil, nil, Config.Marker.Size.x, Config.Marker.Size.y, Config.Marker.Size.z, Config.Marker.Color.R, Config.Marker.Color.G, Config.Marker.Color.B, 200)
+                end
+        
+                if NordBoss <= Config.Marker.DrawInteract then
+                    wait = 0
+                    RageUI.Text({ message = "Appuyez sur ~r~[E]~s~ pour ouvrir →→ ~r~Actions Patron", time_display = 1 })
+                    if IsControlJustPressed(1,51) then
+                        RefreshAmbulanceMoney()
+                        BossAmbulance()
+                    end
+                end
+
+                if SudBoss <= Config.Marker.DrawDistance then
+                    wait = 0
+                    DrawMarker(Config.Marker.Type, Config.Sud.boss.x, Config.Sud.boss.y, Config.Sud.boss.z-0.99, nil, nil, nil, -90, nil, nil, Config.Marker.Size.x, Config.Marker.Size.y, Config.Marker.Size.z, Config.Marker.Color.R, Config.Marker.Color.G, Config.Marker.Color.B, 200)
+                end
+        
+                if SudBoss <= Config.Marker.DrawInteract then
+                    wait = 0
+                    RageUI.Text({ message = "Appuyez sur ~r~[E]~s~ pour ouvrir →→ ~r~Actions Patron", time_display = 1 })
+                    if IsControlJustPressed(1,51) then
+                        RefreshAmbulanceMoney()
+                        BossAmbulance()
+                    end
+                end
+            end
+            ----------------------------------------------------------------
+        end
+        Citizen.Wait(wait)
+    end
+end)
+
 ---------------- FONCTIONS ------------------
 function BossAmbulance()
 	local BAmbulance = RageUI.CreateMenu("E.M.S", "Action(s) du patron")
@@ -231,13 +314,3 @@ function BossAmbulance()
 end   
 
 --------------------------------------------
-
-function RefreshAmbulanceMoney()
-	ESX.TriggerServerCallback('eAmbulance:getSocietyMoney', function(money)
-		UpdateAmbulanceMoney(money)
-	end)
-end
-
-function UpdateAmbulanceMoney(money)
-    MoneyAmbulance = ESX.Math.GroupDigits(money)
-end

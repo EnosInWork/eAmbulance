@@ -32,7 +32,7 @@ Citizen.CreateThread(function()
         local SudPharma = #(plyPos-Config.Sud.pharmacie)
         local SudFiche = #(plyPos-Config.Sud.fiche_medical)
         local SudCoffre = #(plyPos-Config.Sud.coffre)
-        local SudBoss = #(plyPos-Config.Sud.boss)
+       -- local SudBoss = #(plyPos-Config.Sud.boss)
         local SudExtra = #(plyPos-Config.Sud.extra)
         local SudRDV = #(plyPos-Config.Sud.rdv)
         --------------------------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ Citizen.CreateThread(function()
         local NordPharma = #(plyPos-Config.Nord.pharmacie)
         local NordFiche = #(plyPos-Config.Nord.fiche_medical)
         local NordCoffre = #(plyPos-Config.Nord.coffre)
-        local NordBoss = #(plyPos-Config.Nord.boss)
+      --  local NordBoss = #(plyPos-Config.Nord.boss)
         local NordExtra = #(plyPos-Config.Nord.extra)
         local NordRDV = #(plyPos-Config.Nord.rdv)
         --------------------------------------------------------------------------------------------------------------------
@@ -180,40 +180,6 @@ Citizen.CreateThread(function()
                     ExtraAmbu()
                 end
             end
-
-            --------------------------------------------------------
-            if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
-
-                if NordBoss <= Config.Marker.DrawDistance then
-                    wait = 0
-                    DrawMarker(Config.Marker.Type, Config.Nord.boss.x, Config.Nord.boss.y, Config.Nord.boss.z-0.99, nil, nil, nil, -90, nil, nil, Config.Marker.Size.x, Config.Marker.Size.y, Config.Marker.Size.z, Config.Marker.Color.R, Config.Marker.Color.G, Config.Marker.Color.B, 200)
-                end
-        
-                if NordBoss <= Config.Marker.DrawInteract then
-                    wait = 0
-                    RageUI.Text({ message = "Appuyez sur ~r~[E]~s~ pour ouvrir →→ ~r~Actions Patron", time_display = 1 })
-                    if IsControlJustPressed(1,51) then
-                        RefreshAmbulanceMoney()
-                        BossAmbulance()
-                    end
-                end
-
-                if SudBoss <= Config.Marker.DrawDistance then
-                    wait = 0
-                    DrawMarker(Config.Marker.Type, Config.Sud.boss.x, Config.Sud.boss.y, Config.Sud.boss.z-0.99, nil, nil, nil, -90, nil, nil, Config.Marker.Size.x, Config.Marker.Size.y, Config.Marker.Size.z, Config.Marker.Color.R, Config.Marker.Color.G, Config.Marker.Color.B, 200)
-                end
-        
-                if SudBoss <= Config.Marker.DrawInteract then
-                    wait = 0
-                    RageUI.Text({ message = "Appuyez sur ~r~[E]~s~ pour ouvrir →→ ~r~Actions Patron", time_display = 1 })
-                    if IsControlJustPressed(1,51) then
-                        RefreshAmbulanceMoney()
-                        BossAmbulance()
-                    end
-                end
-
-            end
-            ----------------------------------------------------------------
 		end
 
         if SudRDV <= Config.Marker.DrawDistance then
