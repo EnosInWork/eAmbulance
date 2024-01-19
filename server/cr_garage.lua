@@ -1,7 +1,3 @@
-ESX = nil
-
-TriggerEvent(Config.esxGet, function(obj) ESX = obj end)
-
 ESX.RegisterServerCallback('eAmbulance:getVehGarage', function(source, cb, carName)
 	MySQL.Async.fetchAll("SELECT * FROM stockambulance WHERE type = @type AND model = @model", {['@type'] = "car", ['@model'] = carName}, function(data)
         cb(#data)

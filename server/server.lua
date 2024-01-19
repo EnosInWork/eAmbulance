@@ -1,8 +1,6 @@
-ESX = nil
 local playersHealing, deadPlayers = {}, {}
 local ambulancesConnected = 0
 
-TriggerEvent(Config.esxGet, function(obj) ESX = obj end)
 TriggerEvent('esx_phone:registerNumber', Config.JobName, ('Alerte ambulance'), true, true)
 TriggerEvent('esx_society:registerSociety', Config.JobName, 'Ambulance', Config.SocietyName, Config.SocietyName, Config.SocietyName, {type = 'public'})
 
@@ -168,20 +166,28 @@ ESX.RegisterServerCallback('eAmbulance:getItemAmount', function(source, cb, item
 	cb(quantity)
 end)
 
-TriggerEvent('es:addGroupCommand', 'revive', Config.GradeForRevive, function(source, args, user)
-	local src = source 
-	local xPlayer = ESX.GetPlayerFromId(source)
-	if args[1] ~= nil then
-		if GetPlayerName(tonumber(args[1])) ~= nil then
-			eLogsDiscord("[Réanimation-staff] "..xPlayer.getName().." a réanimé "..GetPlayerName(tonumber(args[1])), Config.logs.Reanimation)		
-			TriggerClientEvent('eAmbulance:revive', tonumber(args[1]))
+if Config.Framework == "esx" then
+	TriggerEvent('es:addGroupCommand', 'revive', Config.GradeForRevive, function(source, args, user)
+		local src = source 
+		local xPlayer = ESX.GetPlayerFromId(source)
+		if args[1] ~= nil then
+			if GetPlayerName(tonumber(args[1])) ~= nil then
+				eLogsDiscord("[Réanimation-staff] "..xPlayer.getName().." a réanimé "..GetPlayerName(tonumber(args[1])), Config.logs.Reanimation)		
+				TriggerClientEvent('eAmbulance:revive', tonumber(args[1]))
+			end
+		else
+			TriggerClientEvent('eAmbulance:revive', source)
 		end
-	else
-		TriggerClientEvent('eAmbulance:revive', source)
-	end
-end, function(source, args, user)
-	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
-end, { help = "Réanimer un joueur", params = { { name = 'id'} } })
+	end, function(source, args, user)
+		TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
+	end, { help = "Réanimer un joueur", params = { { name = 'id'} } })
+elseif Config.Framework == "newEsx" then 
+	ESX.RegisterCommand('revive', Config.GradeForRevive, function(xPlayer, args, showError)
+		args.playerId.triggerEvent('eAmbulance:revive')
+	end, true, {help = 'Réanimer un joueur', validate = true, arguments = {
+		{name = 'playerId', help = 'The player id', type = 'player'}
+	}})
+end
 
 
 ESX.RegisterServerCallback('eAmbulance:getDeathStatus', function(source, cb)

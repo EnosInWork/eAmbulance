@@ -1,8 +1,3 @@
-ESX = nil
-
-TriggerEvent(Config.esxGet, function(obj) ESX = obj end)
-
-
 RegisterServerEvent('eAmbulance:recruter')
 AddEventHandler('eAmbulance:recruter', function(target)
 

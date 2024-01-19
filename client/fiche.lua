@@ -1,20 +1,3 @@
-ESX = nil
-
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent(Config.esxGet, function(obj) ESX = obj end)
-		Citizen.Wait(10)
-    end
-    while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
-    end
-    if ESX.IsPlayerLoaded() then
-
-		ESX.PlayerData = ESX.GetPlayerData()
-
-    end
-end)
-
 FicheBuilder = {dangerosity = 1}
 ficheData = nil
 ficheIndex = 0

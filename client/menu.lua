@@ -4,17 +4,6 @@ local isBusy, deadPlayers, deadPlayerBlips, isOnDuty = false, {}, {}, false
 
 local appellist = {}
 
-function defESX()
-    while ESX == nil do
-        TriggerEvent(Config.esxGet, function(obj) ESX = obj end)
-        Wait(0)
-    end
-end
-
-Citizen.CreateThread(function()
-    defESX()
-end)
-
 local function getInfoReport()
     local info = {}
     ESX.TriggerServerCallback('eAmbulance:infoReport', function(info)
@@ -191,7 +180,6 @@ function F6Ambulance()
     objets2:SetRectangleBanner(Config.ColorMenuR, Config.ColorMenuG, Config.ColorMenuB, Config.ColorMenuA)
 
     getInfoReport()
-    defESX()
     RageUI.Visible(eAmbulancef6, not RageUI.Visible(eAmbulancef6))
     while eAmbulancef6 do
         Citizen.Wait(0)

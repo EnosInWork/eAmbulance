@@ -17,6 +17,8 @@ Config = {}
 
 Config = {
 
+	Framework = "newEsx", -- "esx" for trigger [OLD ESX] or "newEsx" for [ESX LEGACY ]
+
 	esxGet = "esx:getSharedObject",
 	JobName = "ambulance",
 	SocietyName = "society_ambulance",
@@ -56,7 +58,7 @@ Config = {
 	RespawnPoint = vector3(-449.87884521484,-303.88079833984,34.910816192627),
 	RespawnHeading = 246.53,
 
-	GradeForRevive = "mod",
+	GradeForRevive = {"mod", "admin", "gerant", "_dev", "dev"},
 
 	NBHealPourDegatMarche = 159, -- si il a moins de 159 de vie alors la démarche seras actif et permanante.
 	NBHealPourNODegatMarche = 160, -- si il a plus de 160 alors la démarche n'est pas actif .

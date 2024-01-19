@@ -1,27 +1,5 @@
 local stockCar = {}
 
-ESX = nil 
-
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent(Config.esxGet, function(obj) ESX = obj end)
-		Citizen.Wait(10)
-    end
-    while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
-    end
-    if ESX.IsPlayerLoaded() then
-
-		ESX.PlayerData = ESX.GetPlayerData()
-
-    end
-end)
-
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-	ESX.PlayerData.job = job
-end)
-
 Citizen.CreateThread(function()
     while true do
 		local wait = 800
