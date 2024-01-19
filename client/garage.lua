@@ -314,7 +314,7 @@ function GarageHeliAmbu()
 						RageUI.ButtonWithStyle(v.label, nil, {RightLabel = "Stock(s) : [~b~"..stockHelico[GetHashKey(v.model)].."~s~]"}, ESX.PlayerData.job.grade >= v.minimum_grade, function(_,_,s)
 							if s then
 								if stockHelico[GetHashKey(v.model)] > 0 then
-									SpawnSud(v.model)
+									SpawnHelico(v.model)
 									TriggerServerEvent("eAmbulance:removeVehInGarage", GetHashKey(v.model))
 									RageUI.Popup({message = "<C>~r~- Stock LSMS\n~g~"..v.label.." sortie du stock EMS"})
 									RageUI.CloseAll()
@@ -366,7 +366,7 @@ function BateauAmbu()
 				RageUI.ButtonWithStyle(v.label, nil, {RightLabel = "Stock(s) : [~b~"..stockBato[GetHashKey(v.model)].."~s~]"}, ESX.PlayerData.job.grade >= v.minimum_grade, function(_,_,s)
 					if s then
 						if stockBato[GetHashKey(v.model)] > 0 then
-							SpawnSud(v.model)
+							SpawnBato(v.model)
 							TriggerServerEvent("eAmbulance:removeVehInGarage", GetHashKey(v.model))
 							RageUI.Popup({message = "<C>~r~- Stock EMS\n~g~"..v.label.." sortie du stock EMS"})
 							RageUI.CloseAll()
